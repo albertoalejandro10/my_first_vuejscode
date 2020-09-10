@@ -7,19 +7,46 @@
     <title>Practicando Vue</title>
 </head>
 <body>
-    <div id="app">
-        <img v-bind:src="img" v-bind:alt="name">
-        <h1>
-            {{ name }}
+    <div id="app" v-bind:style="{ background: '#' + color }">
+        <img v-on:mouseover="toggleShowPrices" v-on:mouseout="toggleShowPrices" v-bind:src="img" v-bind:alt="name">
+
+        <h1 v-bind:class="changePercent > 0 ? 'green' : 'red'">
+
+            {{ title }}
             <span v-if="changePercent > 0">😁</span>
             <span v-else-if="changePercent < 0">😂</span>
             <span v-else>😎</span>
+            <span v-on:click="toggleShowPrices">
+                {{ showPrices ? '😍' : '😖'}}
+            </span>
 
-
-            <span v-show="changePercent > 0">😁</span>
-            <span v-show="changePercent < 0">😂</span>
-            <span v-show="changePercent === 0">😎</span>
         </h1>
+
+        <input type="number" v-model="value">
+        <hr>
+        <span> {{ convertedValue }}</span>
+
+
+            <ul v-show=showPrices>
+                <!-- <li v-for="(price, index) in prices" v-bind:key="price">
+                    {{ index + 1 }} - {{ price }}
+                </li> -->
+
+                <!-- <hr> -->
+
+                <li
+                class="uppercase" 
+                v-bind:class="{ orange: price.value === priceOnly, red: price.value < priceOnly, green: price.value > priceOnly }"
+                v-for="(price, index) in pricesWithDays"
+                v-bind:key="price.day">
+                    {{index + 1 }} -> {{ price.day }} - {{ price.value }}
+                </li>
+            </ul>
+
+
+            <!-- <span v-show="changePercent > 0">😁</span>
+            <span v-show="changePercent < 0">😂</span>
+            <span v-show="changePercent === 0">😎</span> -->
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
