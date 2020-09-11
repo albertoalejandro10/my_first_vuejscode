@@ -8,48 +8,45 @@
 </head>
 <body>
     <div id="app" v-bind:style="{ background: '#' + color }">
-        <img v-on:mouseover="toggleShowPrices" v-on:mouseout="toggleShowPrices" v-bind:src="img" v-bind:alt="name">
+        
+        <coin-detail v-on:change-color="updateColor" v-bind:coin="btc">
 
-        <h1 v-bind:class="changePercent > 0 ? 'green' : 'red'">
+            <template v-slot:text>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, qui officiis aperiam maiores ut vitae fugit tempora ab! Hic ipsam atque corporis! Rem culpa doloribus voluptates! Nobis, quidem tempora. Neque.</p>
+            </template>
 
-            {{ title }}
-            <span v-if="changePercent > 0">😁</span>
-            <span v-else-if="changePercent < 0">😂</span>
-            <span v-else>😎</span>
-            <span v-on:click="toggleShowPrices">
-                {{ showPrices ? '😍' : '😖'}}
-            </span>
+            <template v-slot:link>
+                <a href="#">Enlace</a>
+            </template>
 
-        </h1>
+        </coin-detail>
 
-        <input type="number" v-model="value">
-        <hr>
-        <span> {{ convertedValue }}</span>
-
-
-            <ul v-show=showPrices>
+            <!-- <ul v-show=showPrices> -->
                 <!-- <li v-for="(price, index) in prices" v-bind:key="price">
                     {{ index + 1 }} - {{ price }}
                 </li> -->
 
                 <!-- <hr> -->
 
-                <li
+                <!-- <li
                 class="uppercase" 
                 v-bind:class="{ orange: price.value === priceOnly, red: price.value < priceOnly, green: price.value > priceOnly }"
                 v-for="(price, index) in pricesWithDays"
                 v-bind:key="price.day">
                     {{index + 1 }} -> {{ price.day }} - {{ price.value }}
                 </li>
-            </ul>
+            </ul> -->
 
 
             <!-- <span v-show="changePercent > 0">😁</span>
             <span v-show="changePercent < 0">😂</span>
             <span v-show="changePercent === 0">😎</span> -->
+            <!-- <hr> -->
+            <!-- <button-counter></button-counter> -->
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
     <script src="app.js"></script>    
 </body>
 </html>
