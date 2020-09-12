@@ -21,6 +21,14 @@ Vue.component('CoinDetail' , {
             return this.value/this.coin.priceOnly
         }
     },
+    
+    created(){
+        console.log('Created from CoinDetails...')
+    },
+
+    mounted(){
+        console.log('Mounted from CoinDetails...')
+    },
 
     methods:{
         toggleShowPrices(){
@@ -111,6 +119,14 @@ new Vue({
         }
     },
 
+    created(){
+        console.log('Created...')
+    },
+
+    mounted(){
+        console.log('Mounted...')
+    },
+
     // watch: {
     //     showPrices(newValue, oldValue){
     //         console.log(newValue, oldValue)
@@ -125,3 +141,5 @@ new Vue({
         }
     },
 })
+
+ Vue.config.devtools = true;
